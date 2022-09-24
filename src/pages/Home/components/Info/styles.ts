@@ -13,7 +13,12 @@ export const InfoContent = styled.div`
   gap: 56px;
   flex-direction: row;
 
-  padding: 94px 0 100px 0;
+  padding: 94px 20px 100px 20px;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
 `
 
 export const InfoBanner = styled.div`
@@ -30,6 +35,16 @@ export const InfoBanner = styled.div`
     font-size: 1.25rem;
     line-height: 130%;
     margin-top: 16px;
+  }
+
+  @media (max-width: 1000px) {
+    > h1 {
+      font-size: 2rem;
+    }
+
+    > p {
+      font-size: 1rem;
+    }
   }
 `
 

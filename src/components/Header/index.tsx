@@ -6,7 +6,7 @@ import { defaultTheme } from '../../styles/themes/default'
 
 export function Header() {
   return (
-    <HeaderContainer>
+    <HeaderContainer className="container">
       <img src={logoImg} alt="" />
 
       <HeaderButtonContainer>
@@ -15,7 +15,7 @@ export function Header() {
           Mogi das Cruzes, SP
         </HeaderButton>
         <HeaderButton color="yellow">
-          <span>2</span>
+          {/* <span>2</span> */}
           <ShoppingCart
             size={32}
             weight="fill"

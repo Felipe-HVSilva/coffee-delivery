@@ -1,6 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const HeaderContainer = styled.header`
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
   margin: 0 auto;
 
   display: flex;
@@ -20,16 +24,11 @@ export const HeaderButtonContainer = styled.div`
   gap: 0.75rem;
 `
 
-const COLOR_BUTTON = {
-  yellow: 'yellow-light',
-  purple: 'purple-light',
-} as const
-
-interface ColorButtonProps {
-  color: keyof typeof COLOR_BUTTON
+interface ColorProps {
+  color: 'purple' | 'yellow'
 }
 
-export const HeaderButton = styled.button<ColorButtonProps>`
+export const HeaderButton = styled.button<ColorProps>`
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -40,9 +39,6 @@ export const HeaderButton = styled.button<ColorButtonProps>`
   border: none;
   border-radius: 6px;
   cursor: pointer;
-
-  background: ${(props) => props.theme.product[COLOR_BUTTON[props.color]]};
-  color: ${(props) => props.theme.product['purple-dark']};
   position: relative;
 
   > span {
@@ -63,4 +59,8 @@ export const HeaderButton = styled.button<ColorButtonProps>`
 
     background-color: ${(props) => props.theme.product['yellow-dark']};
   }
+
+  ${({ color }) => css`
+    background-color: ${(props) => props.theme.product[`${color}-light`]};
+  `}
 `
