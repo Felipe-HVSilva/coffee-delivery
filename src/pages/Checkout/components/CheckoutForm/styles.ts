@@ -8,6 +8,14 @@ export const CheckoutFormContainer = styled.div`
   width: 40rem;
 `
 
+export const Tilte = styled.h1`
+  font-size: 1rem;
+  line-height: 130%;
+  font-weight: 700;
+  color: ${(props) => props.theme.base['base-subtitle']};
+  font-family: 'Baloo 2', sans-serif;
+`
+
 export const FormSectionContainer = styled(SectionBaseStyle)`
   display: flex;
   flex-direction: column;

@@ -3,14 +3,14 @@ import { useTheme } from 'styled-components'
 import { SectionTitle } from '../SectionTitle'
 import { AddressForm } from './AddressForm'
 import { PaymentMethodOptions } from './PaymentMethodOptions'
-import { CheckoutFormContainer, FormSectionContainer } from './styles'
+import { CheckoutFormContainer, FormSectionContainer, Tilte } from './styles'
 
 export function CheckoutForm() {
   const theme = useTheme()
 
   return (
     <CheckoutFormContainer>
-      <h1>Complete seu pedido</h1>
+      <Tilte>Complete seu pedido</Tilte>
       <FormSectionContainer>
         <SectionTitle
           title="Endereço de entrega"

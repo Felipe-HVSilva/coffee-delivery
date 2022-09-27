@@ -4,7 +4,7 @@ import { IconContainer, IconSvg } from './styles'
 interface IconProps {
   icon: ReactNode
   iconBg: string
-  text?: string
+  text?: ReactNode
 }
 
 export function IconButton({ icon, iconBg, text }: IconProps) {

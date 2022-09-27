@@ -1,9 +1,13 @@
 import { Minus, Plus } from 'phosphor-react'
 import { IconWrapper, QuantityInputContainer } from './styles'
 
-export function QuantityInput() {
+interface QuantityProps {
+  size?: 'medium' | 'small'
+}
+
+export function QuantityInput({ size = 'medium' }: QuantityProps) {
   return (
-    <QuantityInputContainer>
+    <QuantityInputContainer size={size}>
       <IconWrapper>
         <Minus weight="fill" size={14} />
       </IconWrapper>
