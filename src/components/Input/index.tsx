@@ -1,8 +1,28 @@
-import { InputHTMLAttributes } from 'react'
-import { InputStyleContainer } from './styles'
+import { forwardRef, InputHTMLAttributes } from 'react'
+import {
+  InputStyleContainer,
+  InputStyled,
+  InputWrapper,
+  RightText,
+} from './styles'
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>
-
-export function Input({ ...rest }: InputProps) {
-  return <InputStyleContainer {...rest} />
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  error?: string
+  rightText?: string
 }
+
+// eslint-disable-next-line react/display-name
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  // eslint-disable-next-line n/handle-callback-err
+  ({ error, rightText, ...props }, ref) => {
+    return (
+      <InputWrapper className={props.className}>
+        <InputStyleContainer hasError={!!error}>
+          <InputStyled {...props} ref={ref} />
+          {rightText && <RightText>{rightText}</RightText>}
+        </InputStyleContainer>
+        {error && <p>{error}</p>}
+      </InputWrapper>
+    )
+  },
+)

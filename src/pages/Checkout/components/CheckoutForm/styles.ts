@@ -48,4 +48,9 @@ export const PaymentMethodOptionsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
+
+  > p {
+    font-size: 0.85rem;
+    color: ${(props) => props.theme.base.error};
+  }
 `

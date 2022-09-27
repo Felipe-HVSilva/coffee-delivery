@@ -3,9 +3,28 @@ import { IconButton } from '../../components/IconButton'
 import { SuccessContainer, SuccessDetailsContainer } from './styles'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useTheme } from 'styled-components'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { OrderData } from '../Checkout'
+import { paymentMethods } from '../Checkout/components/CheckoutForm/PaymentMethodOptions'
+import { useEffect } from 'react'
+
+interface LocationType {
+  state: OrderData
+}
 
 export function Success() {
   const theme = useTheme()
+
+  const { state } = useLocation() as unknown as LocationType
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!state) {
+      navigate('/')
+    }
+  }, [])
+
+  if (!state) return <></>
   return (
     <SuccessContainer className="container">
       <div>
@@ -17,9 +36,12 @@ export function Success() {
             <IconButton
               text={
                 <p>
-                  Entrega em <strong>Rua João Mariano Franco</strong>
+                  Entrega em:
+                  <strong>
+                    {state.street}, {state.number}
+                  </strong>
                   <br />
-                  Mogi das Cruzes - São Paulo, SP
+                  {state.district} - {state.city}, {state.uf}
                 </p>
               }
               iconBg={theme.product.purple}
@@ -42,7 +64,7 @@ export function Success() {
               text={
                 <p>
                   Pagamento na entrega <br />
-                  <strong>Cartão de Crédito</strong>
+                  <strong>{paymentMethods[state.paymentMethod].label}</strong>
                 </p>
               }
             />

@@ -10,7 +10,7 @@ export const InfoContainer = styled.section`
 
 export const InfoContent = styled.div`
   display: flex;
-  gap: 56px;
+  gap: 39px;
   flex-direction: row;
 
   padding: 94px 20px 100px 20px;

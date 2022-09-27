@@ -6,25 +6,53 @@ import {
   ItemContainer,
   RemoveButton,
 } from './styles'
+import { CartItem } from '../../../../contexts/CartContext'
+import { formatMoney } from '../../../../utils/formatMoney'
+import { useCart } from '../../../../hooks/useCart'
 
-export function ItemSelect() {
+interface ItemSelectProps {
+  coffee: CartItem
+}
+
+export function ItemSelect({ coffee }: ItemSelectProps) {
+  const { changeCartItemQuantity, removeCartItem } = useCart()
+
+  const coffeeTotal = coffee.quantity * coffee.price
+  const formattedPrice = formatMoney(coffeeTotal)
+
+  function handleIncrease() {
+    changeCartItemQuantity(coffee.id, 'increase')
+  }
+
+  function handleDecrease() {
+    changeCartItemQuantity(coffee.id, 'decrease')
+  }
+
+  function handleRemove() {
+    removeCartItem(coffee.id)
+  }
   return (
     <ItemContainer>
       <div>
-        <img src="./coffee/expresso.png" alt="" />
+        <img src={`/coffee/${coffee.photo}`} alt="" />
 
         <InfoItem>
-          <h1>Expresso Tradicional</h1>
+          <h1>{coffee.name}</h1>
           <ActionsContainer>
-            <QuantityInput size="small" />
-            <RemoveButton>
+            <QuantityInput
+              size="small"
+              onIncrease={handleIncrease}
+              onDecrease={handleDecrease}
+              quantity={coffee.quantity}
+            />
+            <RemoveButton onClick={handleRemove}>
               <Trash size={16} />
               Remover
             </RemoveButton>
           </ActionsContainer>
         </InfoItem>
       </div>
-      <p>R$19,90</p>
+      <p>R${formattedPrice}</p>
     </ItemContainer>
   )
 }

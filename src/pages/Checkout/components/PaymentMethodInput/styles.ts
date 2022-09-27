@@ -1,6 +1,24 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const PaymentMethodContainer = styled.div`
+  input {
+    visibility: hidden;
+    appearance: none;
+  }
+
+  input:checked + label div {
+    ${({ theme }) => css`
+      background: ${theme.product['purple-light']};
+      border-color: ${theme.product.purple};
+    `}
+
+    &:hover {
+      background: ${(props) => props.theme.base['base-hover']};
+    }
+  }
+`
+
+export const ContentContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -19,7 +37,9 @@ export const PaymentMethodContainer = styled.div`
     background: ${(props) => props.theme.base['base-hover']};
   }
 
+  svg {
+    color: ${(props) => props.theme.product.purple};
+  }
+
   user-select: none;
 `
-
-export const IconContainer = styled.div``
