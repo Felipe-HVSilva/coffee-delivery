@@ -5,7 +5,7 @@ import { useCart } from '../../../../hooks/useCart'
 import { formatMoney } from '../../../../utils/formatMoney'
 import { AddCartWrapper, Card, CardFooter, Name, Tags } from './styles'
 
-interface Coffee {
+export interface Coffee {
   id: number
   tags: string[]
   name: string
