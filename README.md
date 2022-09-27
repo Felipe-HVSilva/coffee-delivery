@@ -1,7 +1,8 @@
 # Coffee Delivery
 Um aplicativo de delivery de café
 
-<a hrft="https://coffee-delivery-573h.vercel.app/">Acesse aqui</a>
+Acesse aqui
+https://coffee-delivery-573h.vercel.app/
 
 ## Home
 ![preview](./.github/home.png)
